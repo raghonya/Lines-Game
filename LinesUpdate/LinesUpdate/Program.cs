@@ -15,7 +15,9 @@ namespace LinesUpdate
 		[STAThread]
 		static void Main()
 		{
-			//Form1.test();
+			int a = 64;
+			Console.WriteLine(a.ToString());
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new Form1());
