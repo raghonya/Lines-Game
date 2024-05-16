@@ -114,7 +114,6 @@ namespace LinesUpdate
 				return;
 			map.findShortestWay(ref this.buttons, this.colors, row, col);
 			this.Refresh();
-			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		}
 
 		public void mouseLeave(object sender, EventArgs e)
@@ -185,7 +184,7 @@ namespace LinesUpdate
 
 		public void saveButtonClick(object sender, EventArgs e)
 		{
-			if (gameInProcess && this.pressed.Count == 0)
+			if (gameInProcess/* && this.pressed.Count == 0*/)
 				this.load.createLoad(this.colors, this.map, this.score);
 		}
 
@@ -195,6 +194,10 @@ namespace LinesUpdate
 			pickButtonIndexes(out row, out col, (RoundButton)sender);
 			if (map.values[row, col] < 0)
 			{
+				//Console.WriteLine(("AAAAAAAAAAAAAAAAAAAAAAAAAAAABBASBSGD ASGDASBDA"));
+				this.startButton.Enabled = false;
+				this.loadButton.Enabled = false;
+				this.saveButton.Enabled = false;
 				if (pressed.Count == 1)
 				{
 					RoundButton tmp = pressed.Pop();
@@ -234,8 +237,11 @@ namespace LinesUpdate
 					this.score += (exploded == 5 ? 10 : 10 + ((exploded - 5) * 4));
 					this.scoreLabel.Text = "Score: " + score;
 				}
+				this.startButton.Enabled = true;
+				this.loadButton.Enabled = true;
+				this.saveButton.Enabled = true;
 				//Console.WriteLine("++++++++++++++++++++AFTER ALL++++++++++++++++++++");
-				map.printValues();
+				Map.printValues(map.values);
 				//Console.WriteLine("++++++++++++++++++++RESET STEPS++++++++++++++++++++");
 				//load.createLoad(this.colors, this.map, this.score);
 			}

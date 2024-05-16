@@ -56,7 +56,7 @@ namespace LinesUpdate
 			this.scoreLabel.Location = new System.Drawing.Point(669, 150);
 			this.scoreLabel.Name = "scoreLabel";
 			this.scoreLabel.Size = new System.Drawing.Size(120, 30);
-			this.scoreLabel.TabIndex = 2;
+			this.scoreLabel.TabIndex = 3;
 			// 
 			// gameOverLabel
 			// 
@@ -67,7 +67,7 @@ namespace LinesUpdate
 			this.gameOverLabel.Location = new System.Drawing.Point(200, 200);
 			this.gameOverLabel.Name = "gameOverLabel";
 			this.gameOverLabel.Size = new System.Drawing.Size(100, 23);
-			this.gameOverLabel.TabIndex = 3;
+			this.gameOverLabel.TabIndex = 4;
 			this.gameOverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// startButton
@@ -75,9 +75,9 @@ namespace LinesUpdate
 			this.startButton.Font = new System.Drawing.Font("Arial", 8F);
 			this.startButton.Location = new System.Drawing.Point(669, 36);
 			this.startButton.Name = "startButton";
-			this.startButton.Size = new System.Drawing.Size(90, 30);
+			this.startButton.Size = new System.Drawing.Size(100, 30);
 			this.startButton.TabIndex = 0;
-			this.startButton.Text = "New game";
+			this.startButton.Text = "New Game";
 			this.startButton.UseVisualStyleBackColor = true;
 			this.startButton.Click += new System.EventHandler(this.startButton_Click);
 			// 
@@ -86,19 +86,20 @@ namespace LinesUpdate
 			this.loadButton.Font = new System.Drawing.Font("Arial", 8F);
 			this.loadButton.Location = new System.Drawing.Point(669, 72);
 			this.loadButton.Name = "loadButton";
-			this.loadButton.Size = new System.Drawing.Size(90, 30);
-			this.loadButton.TabIndex = 0;
-			this.loadButton.Text = "Load game";
+			this.loadButton.Size = new System.Drawing.Size(100, 30);
+			this.loadButton.TabIndex = 1;
+			this.loadButton.Text = "Load Game";
 			this.loadButton.UseVisualStyleBackColor = true;
 			this.loadButton.Click += new System.EventHandler(this.loadButtonClick);
 			// 
 			// saveButton
 			// 
+			this.saveButton.Font = new System.Drawing.Font("Arial", 8F);
 			this.saveButton.Location = new System.Drawing.Point(669, 108);
-			this.saveButton.Name = "Save Game";
-			this.saveButton.Size = new System.Drawing.Size(90, 30);
-			this.saveButton.TabIndex = 3;
-			this.saveButton.Text = "saveButton";
+			this.saveButton.Name = "saveButton";
+			this.saveButton.Size = new System.Drawing.Size(100, 30);
+			this.saveButton.TabIndex = 2;
+			this.saveButton.Text = "Save Game";
 			this.saveButton.UseVisualStyleBackColor = true;
 			this.saveButton.Click += new System.EventHandler(this.saveButtonClick);
 			// 
@@ -107,9 +108,9 @@ namespace LinesUpdate
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 700);
+			this.Controls.Add(this.scoreLabel);
 			this.Controls.Add(this.saveButton);
 			this.Controls.Add(this.loadButton);
-			this.Controls.Add(this.scoreLabel);
 			this.Controls.Add(this.startButton);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Name = "Form1";
@@ -117,7 +118,6 @@ namespace LinesUpdate
 			this.ResumeLayout(false);
 
 		}
-
 		#endregion
 
 		private	System.Windows.Forms.Button	startButton;

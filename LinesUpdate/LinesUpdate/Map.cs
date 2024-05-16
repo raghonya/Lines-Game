@@ -21,7 +21,7 @@ namespace LinesUpdate
 					values[i, j] = 0;
 		}
 
-		public void printValues()
+		public static void printValues(int[,] values)
 		{
 			Console.WriteLine("---------------------------------");
 			for (int i = 0; i < size; i++)
@@ -245,7 +245,7 @@ namespace LinesUpdate
 				}
 			}
 			Console.WriteLine("Posle cikla");
-			printValues();
+			Map.printValues(this.values);
 		}
 
 		public Stack<MyTuple> findShortestWay(ref RoundButton[,] buttons, Colors color,int dstRow, int dstCol)
@@ -267,7 +267,7 @@ namespace LinesUpdate
 				else
 					break;
 			}
-			this.printValues();
+			Map.printValues(this.values);
 			foreach (MyTuple tmp in way)
 			{
 				//Console.WriteLine("row: " + tmp.row + " col: " + tmp.col);

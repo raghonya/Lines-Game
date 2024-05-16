@@ -42,7 +42,7 @@ namespace LinesUpdate
 			this.colorValue[0] = (-(tmp[0] - '0') - 1);
 			this.colorValue[1] = (-(tmp[1] - '0') - 1);
 			this.colorValue[2] = (-(tmp[2] - '0') - 1);
-			tmp = tmp.Remove(0, 4);
+			tmp = tmp.Remove(0, tmp.IndexOf('\n') + 1) ;
 			/* COLORS LOAD */
 			
 			/* MAP LOAD */
@@ -75,9 +75,9 @@ namespace LinesUpdate
 			}
 			File.WriteAllText(this.loadFileName, score + "\n");
 			for (int i = 0; i < 3; ++i)
-				File.AppendAllText(this.loadFileName, 
+				File.AppendAllText(this.loadFileName,
 					(-color.getColorValue(color.nextColors[i].BackColor) - 1) + "");
-			File.AppendAllText(this.loadFileName, mapInfo);
+			File.AppendAllText(this.loadFileName, "\n" + mapInfo);
 		}
 		public int	atoi(string s)
 		{
