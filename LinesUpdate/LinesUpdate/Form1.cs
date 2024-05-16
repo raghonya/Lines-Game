@@ -16,17 +16,17 @@ namespace LinesUpdate
 {
 	public partial class Form1 : Form
 	{
-		private Map					map = new Map();
-		private Load				load = new Load();
-		private Colors				colors = new Colors();
-		private Stack<RoundButton>	pressed = new Stack<RoundButton>();
-		private RoundButton[,]		buttons = new RoundButton[Map.size, Map.size];
-		private int					score = 0;
-		private const int			buttonSize = 50;
-		private int					colorValue = 0;
-		private int					highestScore = 0;
-		private static int			newGamePressed = 0;
-		private bool				gameInProcess = false; 
+		private Map map = new Map();
+		private Load load = new Load();
+		private Colors colors = new Colors();
+		private Stack<RoundButton> pressed = new Stack<RoundButton>();
+		private RoundButton[,] buttons = new RoundButton[Map.size, Map.size];
+		private int score = 0;
+		private const int buttonSize = 50;
+		private int colorValue = 0;
+		private int highestScore = 0;
+		private static int newGamePressed = 0;
+		private bool gameInProcess = false;
 
 		public class MyTuple
 		{
@@ -37,7 +37,7 @@ namespace LinesUpdate
 
 		private void DisableControls(Control con)
 		{
-			
+
 			foreach (Control c in con.Controls)
 				DisableControls(c);
 			con.Enabled = false;
@@ -65,7 +65,7 @@ namespace LinesUpdate
 			col = button.Name[1] - '0';
 		}
 
-		public bool	gameOverCheck()
+		public bool gameOverCheck()
 		{
 			if (map.mapIsFilled())
 			{
@@ -104,20 +104,20 @@ namespace LinesUpdate
 			this.ResumeLayout();
 		}
 
-		public void	mouseEnter(object sender, EventArgs e)
+		public void mouseEnter(object sender, EventArgs e)
 		{
-			RoundButton	button = (RoundButton)sender;
-			int		row, col;
+			RoundButton button = (RoundButton)sender;
+			int row, col;
 
 			pickButtonIndexes(out row, out col, button);
-			if (map.values[row, col] == 0 ||  pressed.Count != 1 || button.BackColor != Color.Gray)
-				return ;
+			if (map.values[row, col] == 0 || pressed.Count != 1 || button.BackColor != Color.Gray)
+				return;
 			map.findShortestWay(ref this.buttons, this.colors, row, col);
 			this.Refresh();
 			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		}
 
-		public void	mouseLeave(object sender, EventArgs e)
+		public void mouseLeave(object sender, EventArgs e)
 		{
 			Button button = (Button)sender;
 
@@ -183,9 +183,9 @@ namespace LinesUpdate
 				this.Controls.Remove(this.gameOverLabel);
 		}
 
-		public void	saveButtonClick(object sender, EventArgs e)
+		public void saveButtonClick(object sender, EventArgs e)
 		{
-			if (gameInProcess)
+			if (gameInProcess && this.pressed.Count == 0)
 				this.load.createLoad(this.colors, this.map, this.score);
 		}
 
@@ -211,8 +211,8 @@ namespace LinesUpdate
 			else if (map.values[row, col] > 0 && this.pressed.Count == 1)
 			{
 				RoundButton tmp = this.pressed.Peek();
-				int			srcRow, srcCol;
-				int			exploded;
+				int srcRow, srcCol;
+				int exploded;
 
 				pickButtonIndexes(out srcRow, out srcCol, tmp);
 				if (srcRow == row && srcCol == col) { return; }
