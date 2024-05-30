@@ -56,7 +56,7 @@ namespace LinesUpdate
 						values[i, j] = 0;
 		}
 
-		public void clearMap(ref Form1.RoundButton[,] buttons)
+		public void clearMap(ref RoundButton[,] buttons)
 		{
 			for (int i = 0; i < size; i++)
 			{
@@ -69,7 +69,7 @@ namespace LinesUpdate
 		}
 
 
-		private int rowsCheck(ref Form1.RoundButton[,] buttons, int row, int col, int color)
+		private int rowsCheck(ref RoundButton[,] buttons, int row, int col, int color)
 		{
 			int tmpRow = row;
 			int rowCount = 1;
@@ -97,7 +97,7 @@ namespace LinesUpdate
 			return (retValue);
 		}
 
-		private int columnsCheck(ref Form1.RoundButton[,] buttons, int row, int col, int color)
+		private int columnsCheck(ref RoundButton[,] buttons, int row, int col, int color)
 		{
 			int tmpCol = col;
 			int colCount = 1;
@@ -125,7 +125,7 @@ namespace LinesUpdate
 			return (retValue);
 		}
 
-		private int diagonalCheck(ref Form1.RoundButton[,] buttons, int row, int col, int color)
+		private int diagonalCheck(ref RoundButton[,] buttons, int row, int col, int color)
 		{
 			int tmpRow = row - 1, tmpCol = col - 1;
 			int diagCount = 1;
@@ -192,7 +192,7 @@ namespace LinesUpdate
 			return (retValue);
 		}
 
-		public int colorsInLineCheck(ref Form1.RoundButton[,] buttons, int row, int col)
+		public int colorsInLineCheck(ref RoundButton[,] buttons, int row, int col)
 		{
 			int explodedCount;
 

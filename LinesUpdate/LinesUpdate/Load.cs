@@ -29,7 +29,7 @@ namespace LinesUpdate
 			}
 		}
 
-		public void loadGame(ref int score, ref int[,] map, ref Form1.RoundButton[,]	buttons, Color[] colors)
+		public void loadGame(ref int score, ref int[,] map, ref RoundButton[,]	buttons, Color[] colors)
 		{
 			string tmp = File.ReadAllText("./load.txt");
 

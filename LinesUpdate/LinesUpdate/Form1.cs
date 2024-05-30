@@ -52,6 +52,9 @@ namespace LinesUpdate
 
 		public Form1()
 		{
+			this.KeyPreview = true;
+			this.KeyDown += new KeyEventHandler(this.Form_KeyDown);
+
 			InitializeComponent();
 			this.SuspendLayout();
 			colors.initNextColors(this.Controls, buttonSize);
@@ -95,6 +98,7 @@ namespace LinesUpdate
 					this.buttons[i, j].Name = "" + i + j;
 					this.buttons[i, j].Size = new System.Drawing.Size(buttonSize, buttonSize);
 					this.buttons[i, j].TabIndex = 0;
+					this.buttons[i, j].FlatStyle = FlatStyle.Flat;
 					this.buttons[i, j].Click += new System.EventHandler(this.mapButtonClick);
 					this.buttons[i, j].MouseEnter += new System.EventHandler(this.mouseEnter);
 					this.buttons[i, j].MouseLeave += new System.EventHandler(this.mouseLeave);
@@ -244,6 +248,13 @@ namespace LinesUpdate
 				Map.printValues(map.values);
 				//Console.WriteLine("++++++++++++++++++++RESET STEPS++++++++++++++++++++");
 				//load.createLoad(this.colors, this.map, this.score);
+			}
+		}
+		private void Form_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				this.Close();
 			}
 		}
 	}

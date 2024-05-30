@@ -39,6 +39,7 @@ namespace LinesUpdate
 				this.nextColors[i].Name = "next" + i + 1;
 				this.nextColors[i].Size = new System.Drawing.Size(buttonSize, buttonSize);
 				this.nextColors[i].TabIndex = 0;
+				this.nextColors[i].FlatStyle = FlatStyle.Flat;
 				this.nextColors[i].BackColor = Color.Gray;
 				this.nextColors[i].Enabled = false;
 				this.nextColors[i].Visible = false;

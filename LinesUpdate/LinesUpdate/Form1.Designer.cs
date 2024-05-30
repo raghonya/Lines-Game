@@ -3,18 +3,19 @@ using System.Drawing.Drawing2D;
 
 namespace LinesUpdate
 {
+	public class RoundButton : System.Windows.Forms.Button
+	{
+		protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+		{
+			GraphicsPath grPath = new GraphicsPath();
+			grPath.AddEllipse(0, 0, ClientSize.Width, ClientSize.Height);
+			this.Region = new System.Drawing.Region(grPath);
+			base.OnPaint(e);
+		}
+	}
+
 	partial class Form1
 	{
-		public class RoundButton : System.Windows.Forms.Button
-		{
-			protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
-			{
-				GraphicsPath grPath = new GraphicsPath();
-				grPath.AddEllipse(0, 0, ClientSize.Width, ClientSize.Height);
-				this.Region = new System.Drawing.Region(grPath);
-				base.OnPaint(e);
-			}
-		}
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -48,6 +49,17 @@ namespace LinesUpdate
 			this.saveButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
+			// startButton
+			// 
+			this.startButton.Font = new System.Drawing.Font("Arial", 8F);
+			this.startButton.Location = new System.Drawing.Point(669, 36);
+			this.startButton.Name = "startButton";
+			this.startButton.Size = new System.Drawing.Size(100, 30);
+			this.startButton.TabIndex = 0;
+			this.startButton.Text = "New Game";
+			this.startButton.UseVisualStyleBackColor = true;
+			this.startButton.Click += new System.EventHandler(this.startButton_Click);
+			// 
 			// scoreLabel
 			// 
 			this.scoreLabel.BackColor = this.BackColor;
@@ -69,17 +81,6 @@ namespace LinesUpdate
 			this.gameOverLabel.Size = new System.Drawing.Size(100, 23);
 			this.gameOverLabel.TabIndex = 4;
 			this.gameOverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// startButton
-			// 
-			this.startButton.Font = new System.Drawing.Font("Arial", 8F);
-			this.startButton.Location = new System.Drawing.Point(669, 36);
-			this.startButton.Name = "startButton";
-			this.startButton.Size = new System.Drawing.Size(100, 30);
-			this.startButton.TabIndex = 0;
-			this.startButton.Text = "New Game";
-			this.startButton.UseVisualStyleBackColor = true;
-			this.startButton.Click += new System.EventHandler(this.startButton_Click);
 			// 
 			// loadButton
 			// 
@@ -107,7 +108,7 @@ namespace LinesUpdate
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 700);
+			this.ClientSize = new System.Drawing.Size(800, 550);
 			this.Controls.Add(this.scoreLabel);
 			this.Controls.Add(this.saveButton);
 			this.Controls.Add(this.loadButton);
