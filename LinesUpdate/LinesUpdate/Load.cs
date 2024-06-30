@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LinesUpdate
 {
@@ -51,8 +47,6 @@ namespace LinesUpdate
 			{
 				for (int j = 0; j < fileInfo[i].Length; ++j)
 				{
-					//Console.WriteLine((int)(fileInfo[i][j]));
-					//Console.WriteLine("i = " + i + " j = " + j);
 					map[i, j] = -(fileInfo[i][j] - '0');
 					buttons[i, j].BackColor =
 						map[i, j] != 0 ? colors[-map[i, j] - 1] : Color.Gray;

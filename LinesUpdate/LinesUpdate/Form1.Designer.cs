@@ -52,20 +52,20 @@ namespace LinesUpdate
 			// startButton
 			// 
 			this.startButton.Font = new System.Drawing.Font("Arial", 8F);
-			this.startButton.Location = new System.Drawing.Point(669, 36);
+			this.startButton.Location = new System.Drawing.Point(750, 36);
 			this.startButton.Name = "startButton";
 			this.startButton.Size = new System.Drawing.Size(100, 30);
 			this.startButton.TabIndex = 0;
 			this.startButton.Text = "New Game";
 			this.startButton.UseVisualStyleBackColor = true;
-			this.startButton.Click += new System.EventHandler(this.startButton_Click);
+			this.startButton.Click += new System.EventHandler(this.startButtonClick);
 			// 
 			// scoreLabel
 			// 
 			this.scoreLabel.BackColor = this.BackColor;
 			this.scoreLabel.Font = new System.Drawing.Font("Arial", 9F);
 			this.scoreLabel.ForeColor = System.Drawing.Color.Black;
-			this.scoreLabel.Location = new System.Drawing.Point(669, 150);
+			this.scoreLabel.Location = new System.Drawing.Point(750, 150);
 			this.scoreLabel.Name = "scoreLabel";
 			this.scoreLabel.Size = new System.Drawing.Size(120, 30);
 			this.scoreLabel.TabIndex = 3;
@@ -85,7 +85,7 @@ namespace LinesUpdate
 			// loadButton
 			// 
 			this.loadButton.Font = new System.Drawing.Font("Arial", 8F);
-			this.loadButton.Location = new System.Drawing.Point(669, 72);
+			this.loadButton.Location = new System.Drawing.Point(750, 72);
 			this.loadButton.Name = "loadButton";
 			this.loadButton.Size = new System.Drawing.Size(100, 30);
 			this.loadButton.TabIndex = 1;
@@ -96,7 +96,7 @@ namespace LinesUpdate
 			// saveButton
 			// 
 			this.saveButton.Font = new System.Drawing.Font("Arial", 8F);
-			this.saveButton.Location = new System.Drawing.Point(669, 108);
+			this.saveButton.Location = new System.Drawing.Point(750, 108);
 			this.saveButton.Name = "saveButton";
 			this.saveButton.Size = new System.Drawing.Size(100, 30);
 			this.saveButton.TabIndex = 2;
@@ -108,7 +108,7 @@ namespace LinesUpdate
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 550);
+			this.ClientSize = new System.Drawing.Size(900, 630);
 			this.Controls.Add(this.scoreLabel);
 			this.Controls.Add(this.saveButton);
 			this.Controls.Add(this.loadButton);

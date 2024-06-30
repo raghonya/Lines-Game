@@ -1,16 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
-using System.Runtime.CompilerServices;
 
 namespace LinesUpdate
 {
@@ -52,14 +43,13 @@ namespace LinesUpdate
 
 		public Form1()
 		{
-			this.KeyPreview = true;
-			this.KeyDown += new KeyEventHandler(this.Form_KeyDown);
-
 			InitializeComponent();
 			this.SuspendLayout();
 			colors.initNextColors(this.Controls, buttonSize);
 			this.ResumeLayout();
 			colors.NextColors(ref load, 3, false);
+			this.KeyPreview = true;
+			this.KeyDown += new KeyEventHandler(this.Form_KeyDown);
 		}
 
 		private void pickButtonIndexes(out int row, out int col, RoundButton button)
@@ -94,7 +84,7 @@ namespace LinesUpdate
 				{
 					this.buttons[i, j] = new RoundButton();
 					this.buttons[i, j].Location =
-						new System.Drawing.Point(buttonSize * j, buttonSize * i);
+						new System.Drawing.Point(buttonSize * j + (5 * j), buttonSize * i + (i * 5));
 					this.buttons[i, j].Name = "" + i + j;
 					this.buttons[i, j].Size = new System.Drawing.Size(buttonSize, buttonSize);
 					this.buttons[i, j].TabIndex = 0;
@@ -131,7 +121,7 @@ namespace LinesUpdate
 			this.Refresh();
 		}
 
-		private void startButton_Click(object sender, EventArgs e)
+		private void startButtonClick(object sender, EventArgs e)
 		{
 			gameInProcess = true;
 			this.score = 0;
@@ -174,9 +164,9 @@ namespace LinesUpdate
 				load.loadGame(ref this.score, ref map.values, ref this.buttons, colors.arr);
 				this.scoreLabel.Text = "Score: " + this.score;
 			}
-			else
-				; // PTI YLNI MESSAGE "CANT LOAD GAME, PLAY WITHOUT LOAD HEHE" 
 			for (int i = 0; i < 3; ++i)
+			//else
+			//	; // PTI YLNI MESSAGE "CANT LOAD GAME, PLAY WITHOUT LOAD HEHE" 
 			{
 				colors.nextColors[i].Visible = true;
 				if (load.colorValue[i] != 0)
@@ -188,7 +178,7 @@ namespace LinesUpdate
 
 		public void saveButtonClick(object sender, EventArgs e)
 		{
-			if (gameInProcess/* && this.pressed.Count == 0*/)
+			if (gameInProcess)
 				this.load.createLoad(this.colors, this.map, this.score);
 		}
 
@@ -198,7 +188,6 @@ namespace LinesUpdate
 			pickButtonIndexes(out row, out col, (RoundButton)sender);
 			if (map.values[row, col] < 0)
 			{
-				//Console.WriteLine(("AAAAAAAAAAAAAAAAAAAAAAAAAAAABBASBSGD ASGDASBDA"));
 				this.startButton.Enabled = false;
 				this.loadButton.Enabled = false;
 				this.saveButton.Enabled = false;
@@ -218,8 +207,7 @@ namespace LinesUpdate
 			else if (map.values[row, col] > 0 && this.pressed.Count == 1)
 			{
 				RoundButton tmp = this.pressed.Peek();
-				int srcRow, srcCol;
-				int exploded;
+				int srcRow, srcCol, exploded;
 
 				pickButtonIndexes(out srcRow, out srcCol, tmp);
 				if (srcRow == row && srcCol == col) { return; }
@@ -229,7 +217,6 @@ namespace LinesUpdate
 				map.updateMap();
 				map.values[row, col] = colorValue;
 				this.colorValue = 0;
-
 				exploded = map.colorsInLineCheck(ref this.buttons, row, col);
 				if (exploded == 0)
 				{
@@ -244,10 +231,6 @@ namespace LinesUpdate
 				this.startButton.Enabled = true;
 				this.loadButton.Enabled = true;
 				this.saveButton.Enabled = true;
-				//Console.WriteLine("++++++++++++++++++++AFTER ALL++++++++++++++++++++");
-				Map.printValues(map.values);
-				//Console.WriteLine("++++++++++++++++++++RESET STEPS++++++++++++++++++++");
-				//load.createLoad(this.colors, this.map, this.score);
 			}
 		}
 		private void Form_KeyDown(object sender, KeyEventArgs e)
@@ -257,5 +240,6 @@ namespace LinesUpdate
 				this.Close();
 			}
 		}
+
 	}
 }

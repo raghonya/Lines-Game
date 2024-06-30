@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static LinesUpdate.Form1;
 
@@ -35,7 +32,7 @@ namespace LinesUpdate
 			{
 				this.nextColors[i] = new RoundButton();
 				this.nextColors[i].Location =
-					new System.Drawing.Point(500, 150 + (buttonSize * i));
+					new System.Drawing.Point(581, 150 + (buttonSize * i));
 				this.nextColors[i].Name = "next" + i + 1;
 				this.nextColors[i].Size = new System.Drawing.Size(buttonSize, buttonSize);
 				this.nextColors[i].TabIndex = 0;
@@ -50,7 +47,7 @@ namespace LinesUpdate
 		public void NextColors(ref Load load, int count, bool isLoad)
 		{
 			Random rand = new Random();
-			int c1, c2;
+			int c2;
 
 			for (int i = 0; i < count /*&& !map.mapIsFilled()*/; ++i)
 			{
@@ -79,7 +76,7 @@ namespace LinesUpdate
 		public void addColors(ref Load load, ref Map map, ref RoundButton[,] buttons, int count, bool isLoad)
 		{
 			Random rand = new Random();
-			int c1, c2;
+			int c1;
 
 			for (int i = 0; i < count && !map.mapIsFilled(); ++i)
 			{
